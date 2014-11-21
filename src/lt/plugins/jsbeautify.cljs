@@ -13,20 +13,41 @@
 (def beautify-path (files/join plugins/*plugin-dir* "node_modules/js-beautify"))
 
 (defn beauty [obj-id beautify-path code]
-    (let [jsbeautify ( .-js_beautify (
-                                 js/require beautify-path
-                                 )
-                  )]
+    (let [jsbeautify ( .-js_beautify (js/require beautify-path))]
           (jsbeautify code)
       )
-    )
+)
 
-(defn beautyCall [obj-id beautify-path code]
-  (editor/replace-selection obj-id (beauty obj-id beautify-path code))
+(defn beautify-selection [obj-id beautify-path]
+  (editor/replace-selection obj-id (beauty obj-id beautify-path (editor/selection obj-id)))
  )
 
-(cmd/command {:command :user.beauty
-              :desc "JsBeautify: beautify current selection"
+(defn beautify-file [obj-id beautify-path]
+  (let [position (editor/->cursor obj-id)]
+      (editor/set-val obj-id (beauty obj-id beautify-path (editor/->val obj-id)))
+      (editor/move-cursor obj-id position)
+  )
+ )
+
+(object/behavior* ::on-save
+                  :triggers #{:save}
+                  :type :user
+                  :desc "JsBeautify: Beautify on save"
+                  :reaction (fn [this]
+                              (when-let [ed (pool/last-active)]
+                               (beautify-file ed beautify-path )))                              )
+
+
+(cmd/command {:command :jsbeautify.beautify-selection
+              :desc "JsBeautify: Beautify current selection"
               :exec (fn [this]
                       (when-let [ed (pool/last-active)]
-                        (beautyCall ed beautify-path (editor/selection ed))))})
+                        (beautify-selection ed beautify-path)))})
+
+(cmd/command {:command :jsbeautify.beautify-file
+              :desc "JsBeautify: Beautify current file"
+              :exec (fn [this]
+                      (when-let [ed (pool/last-active)]
+                        (beautify-file ed beautify-path)
+                      ))
+            })
