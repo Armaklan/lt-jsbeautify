@@ -1,0 +1,16 @@
+{"version":3,
+ "file":
+ "C:\\Users\\zuberl.PUMA\\AppData\\Local\\LightTable\\plugins\\JsBeautify/compiled.map",
+ "sources":
+ ["C:\\Users\\zuberl.PUMA\\AppData\\Local\\LightTable\\plugins\\JsBeautify/src\\lt\\plugins\\jsbeautify.cljs"],
+ "lineCount":29,
+ "mappings":
+ ";AAAA;;;;;;;;;;;;;;;;AAYA,AAAKA,sCAAc,oEAAA,pEAACC,6BAAWC;AAE/B,+BAAA,4CAAA,3EAAMC,gDAAQC,OAAOC,cAAcC,MAC/B,oDAAA,hDAAMC,aAAW,AAAgB,AACJC,QAAWH,2BAGlC,OAACE,qBAAWD;;AAItB,mCAAA,gDAAA,nFAAMG,wDAAYL,OAAOC,cAAcC,MACrC,OAACI,2CAAyBN,OAAO,AAACD,uCAAOC,OAAOC,cAAcC;;AAGhE,kCAAA,2CAAA,2DAAA,mEAAA,qDAAA,yCAAA,zSAACK,8VAEmB,kBAAA,PAAKC,OACH,IAAAC,gEAAA,AAAA,oBAAAA,/DAAc,AAACE;CAAf,AAAA,SAAAF,mBAAA,xBAAWC,wBACT,OAACL,2CAAWK,GAAGd,oCAAc,AAACgB,mCAAiBF;;CADjD",
+ "names":
+ ["lt.plugins.jsbeautify/beautify-path", "lt.objs.files/join",
+  "lt.objs.plugins/*plugin-dir*", "lt.plugins.jsbeautify/beauty",
+  "obj-id", "beautify-path", "code", "jsbeautify", "js/require",
+  "lt.plugins.jsbeautify/beautyCall",
+  "lt.objs.editor/replace-selection", "lt.objs.command/command",
+  "this", "temp__4126__auto__", "ed",
+  "lt.objs.editor.pool/last-active", "lt.objs.editor/selection"]}
