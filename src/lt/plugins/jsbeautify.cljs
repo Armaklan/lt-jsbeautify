@@ -12,21 +12,21 @@
 (def beautify-path (files/join plugins/*plugin-dir* "node_modules/js-beautify"))
 
 ;; Require Beautify Function from node module
-(defn beautify-execution [obj-id beautify-path code]
+(defn beautify-execution [obj-id beautify-path code opts]
     (let [jsbeautify ( .-js_beautify (js/require beautify-path))]
-          (jsbeautify code)
+          (jsbeautify code (when opts (clj->js opts)))
       )
 )
 
 ;; Apply beautify on current selection
-(defn beautify-selection [obj-id beautify-path]
-  (editor/replace-selection obj-id (beautify-execution obj-id beautify-path (editor/selection obj-id)))
+(defn beautify-selection [obj-id beautify-path opts]
+  (editor/replace-selection obj-id (beautify-execution obj-id beautify-path (editor/selection obj-id) opts))
  )
 
 ;; Apply beautify en current save
-(defn beautify-file [obj-id beautify-path]
+(defn beautify-file [obj-id beautify-path opts]
   (let [position (editor/->cursor obj-id)]
-      (editor/set-val obj-id (beautify-execution obj-id beautify-path (editor/->val obj-id)))
+      (editor/set-val obj-id (beautify-execution obj-id beautify-path (editor/->val obj-id) opts))
       (editor/move-cursor obj-id position)
   )
  )
@@ -38,7 +38,18 @@
                   :desc "JsBeautify: Beautify on save"
                   :reaction (fn [this]
                               (when-let [ed (pool/last-active)]
-                               (beautify-file ed beautify-path )))                              )
+                               (beautify-file ed beautify-path (::jsbeautify-options @ed))))                              )
+
+;; Declare JsBeautify user options
+(object/behavior* ::jsbeautify-options
+                  :triggers #{:object.instant}
+                  :type :user
+                  :desc "JSBeautify: Set JSBeautify options"
+                  :params [{:label "options"
+                            :example "{:indent_size 2}"
+                            :type :clj}]
+                  :reaction (fn [this opts]
+                              (object/merge! this {::jsbeautify-options opts})))
 
 
 ;; Declare command to beautify current selection
@@ -46,13 +57,12 @@
               :desc "JsBeautify: Beautify current selection"
               :exec (fn [this]
                       (when-let [ed (pool/last-active)]
-                        (beautify-selection ed beautify-path)))})
+                        (beautify-selection ed beautify-path (::jsbeautify-options @ed))))})
 
 ;; Declare command to beautify js file
 (cmd/command {:command :jsbeautify.beautify-file
               :desc "JsBeautify: Beautify current file"
               :exec (fn [this]
                       (when-let [ed (pool/last-active)]
-                        (beautify-file ed beautify-path)
-                      ))
-            })
+                        (beautify-file ed beautify-path (::jsbeautify-options @ed))
+                      ))})
