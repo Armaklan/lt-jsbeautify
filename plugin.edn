@@ -1,5 +1,5 @@
 {:name "JSBeautify"
- :author "Armaklan"
+ :author "Lionel Zuber"
  :version "0.0.1"
  :source "https://github.com/Armaklan/lt-jsbeautify"
  :desc "JsBeautify integration for Light Table"
