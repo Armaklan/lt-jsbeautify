@@ -2,11 +2,10 @@
   (:require [lt.object :as object]
             [lt.objs.files :as files]
             [lt.objs.plugins :as plugins]
-            [lt.objs.tabs :as tabs]
             [lt.objs.editor :as editor]
             [lt.objs.editor.pool :as pool]
             [lt.objs.command :as cmd])
-  (:require-macros [lt.macros :refer [defui behavior]]))
+  (:require-macros [lt.macros :refer [behavior]]))
 
 
 ;; Path to BeautifyJs node module
