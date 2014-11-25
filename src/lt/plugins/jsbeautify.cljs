@@ -7,7 +7,6 @@
             [lt.objs.command :as cmd])
   (:require-macros [lt.macros :refer [behavior]]))
 
-
 ;; Path to BeautifyJs node module
 (def beautify-path (files/join plugins/*plugin-dir* "node_modules/js-beautify"))
 
@@ -50,7 +49,6 @@
                             :type :clj}]
                   :reaction (fn [this opts]
                               (object/merge! this {::jsbeautify-options opts})))
-
 
 ;; Declare command to beautify current selection
 (cmd/command {:command :jsbeautify.beautify-selection
