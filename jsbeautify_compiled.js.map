@@ -3,19 +3,24 @@
  "C:\\Users\\lionel.zuber\\AppData\\Local\\LightTable\\plugins\\lt-jsbeautify/compiled.map",
  "sources":
  ["C:\\Users\\lionel.zuber\\AppData\\Local\\LightTable\\plugins\\lt-jsbeautify/src\\lt\\plugins\\jsbeautify.cljs"],
- "lineCount":44,
+ "lineCount":55,
  "mappings":
- "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",
+ "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",
  "names":
  ["lt.plugins.jsbeautify/beautify-path", "lt.objs.files/join",
-  "lt.objs.plugins/*plugin-dir*",
-  "lt.plugins.jsbeautify/beautify-execution", "obj-id",
-  "beautify-path", "code", "opts", "jsbeautify", "js/require",
+  "lt.objs.plugins/*plugin-dir*", "lt.plugins.jsbeautify/extract-type",
+  "obj-id", "cljs.core/deref", "method-table__7229__auto__",
+  "cljs.core/atom", "prefer-table__7230__auto__",
+  "method-cache__7231__auto__", "cached-hierarchy__7232__auto__",
+  "hierarchy__7233__auto__", "cljs.core/get",
+  "cljs.core/get-global-hierarchy", "cljs.core/MultiFn",
+  "lt.plugins.jsbeautify/beautify-execution", "beautify-path", "code",
+  "opts", "cljs.core/-add-method", "jsbeautify", "js/require",
   "cljs.core/clj->js", "lt.plugins.jsbeautify/beautify-selection",
   "lt.objs.editor/replace-selection", "lt.objs.editor/selection",
   "lt.plugins.jsbeautify/beautify-file", "position",
   "lt.objs.editor/->cursor", "lt.objs.editor/set-val",
   "lt.objs.editor/->val", "lt.objs.editor/move-cursor",
   "lt.object/behavior*", "this", "temp__4126__auto__", "ed",
-  "lt.objs.editor.pool/last-active", "cljs.core/deref",
-  "lt.object/merge!", "lt.objs.command/command"]}
+  "lt.objs.editor.pool/last-active", "lt.object/merge!",
+  "lt.objs.command/command"]}
